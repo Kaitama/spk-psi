@@ -106,14 +106,14 @@ class Index extends Component
 		// menghitung kriteria bobot
 		$Wj = [];
 		foreach ($Omega as $o) {
-			$Wj[] = round($o / $EOmega, 4);
+			$Wj[] = $o / $EOmega;
 		}
 
 		// menghitung PSI
 		$ThetaI = [];
 		for ($i = 0; $i < $cols; $i++) {
 			for ($j = 0; $j < $rows; $j++) {
-				$ThetaI[$j][$i] = round($Nij[$j][$i] * $Wj[$i], 4);
+				$ThetaI[$j][$i] = $Nij[$j][$i] * $Wj[$i];
 			}
 		}
 
@@ -124,7 +124,7 @@ class Index extends Component
 		}
 
 		foreach ($alternatifs as $key => $alternatif) {
-			$alternatif->nilai = $TThetaI[$key];
+			$alternatif->nilai = round($TThetaI[$key], 4);
 		}
 
 		return $alternatifs;
